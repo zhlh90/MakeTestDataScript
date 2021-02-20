@@ -13,8 +13,8 @@ from faker import Faker, Factory
 cl_agency_code = ['00','01','1300']
 cl_agency_name = ['上海保险事业管理局','黄浦区保险事业管理局','河北省']
 # 业务类型
-cl_bussnisstype_code = ['K90030','K90031','K90032','K90033','K90034','K90035']
-cl_bussnisstype_name = ['转移支出','两定结算','生育津贴支出','零星报销','征缴退费','个账结算']
+cl_bussnisstype_code = ['K90030','K90031','K90032','K90033','K90034','K90035','K10025']
+cl_bussnisstype_name = ['转移支出','两定结算','生育津贴支出','零星报销','征缴退费','个账结算','两定机构月结支付']
 
 # 从字符串中随机取n个字符组成字符串
 def ran_strx(strx, n):
@@ -131,6 +131,15 @@ def make_sql(agency_no,bus_no, n):
             S16 = '17'
             S17 = '18'
             S20 = '21'
+        elif P10 == 'K10025':
+            S11 = '12'
+            S12 = '13'
+            S13 = '14'
+            S14 = '15'
+            S15 = '16'
+            S16 = '17'
+            S17 = '18'
+            S20 = '21'
         elif P10 == 'K90032':
             S11 = otherStyleTime2
             # 身份证号
@@ -211,7 +220,7 @@ def make_sql(agency_no,bus_no, n):
         # S88 = ''
         AGENCY_CODE =cl_agency_code[agency_no]
         AGENCY_NAME =cl_agency_name[agency_no]
-        if P10 == 'K90031':
+        if (P10 == 'K90031' or P10 == 'K10025'):
             # 银行联行号
             S84 = ''
             # 银行开户行
@@ -264,6 +273,6 @@ if __name__ == '__main__':
     # 第一参数：0-上海 1-黄埔，2-河北省
     # ['K90030','K90031','K90032','K90033','K90034','K90035']
     # ['转移支出','两定结算','生育津贴支出','零星报销','征缴退费','个账结算']
-    make_sql(0,5, 5)
+    make_sql(0,6, 10)
 
 
