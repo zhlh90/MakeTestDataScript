@@ -14,4 +14,4 @@ print(fake_cn.company())
 print(fake_cn.ssn(min_age=16, max_age=90))
 
 print(fake2.random_number(4))
-a=1
+a=2
